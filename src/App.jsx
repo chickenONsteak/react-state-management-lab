@@ -1,11 +1,8 @@
 import React from "react";
+// src/App.jsx
 
-function App() {
-  return (
-    <div>
-      <h2>GA SEB</h2>
-    </div>
-  );
-}
+const App = () => {
+  return <h1>Hello world!</h1>;
+};
 
 export default App;
