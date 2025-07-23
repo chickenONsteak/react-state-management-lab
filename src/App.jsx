@@ -106,11 +106,59 @@ const App = () => {
     }
   };
 
+  // Calculate total strength and agility
+  const calculateTotal = team.reduce(
+    (accumulator, fighter) => {
+      return {
+        totalStrength: accumulator.totalStrength + fighter.strength,
+        totalAgilitiy: accumulator.totalAgilitiy + fighter.agility,
+      };
+    },
+    { totalStrength: 0, totalAgilitiy: 0 }
+  );
+
+  const handleRemoveFighter = (fighter) => {
+    // add back into your money
+    setMoney((prevState) => prevState + fighter.price);
+
+    // update team array
+    const updatedTeamState = team.filter((obj) => obj.id !== fighter.id);
+    setTeam(updatedTeamState);
+
+    // update fighters array
+    const updatedFighterState = [...zombieFighters, fighter];
+    setZombieFighters(updatedFighterState);
+  };
+
   return (
     <div>
       <h1>Zombie Fighters</h1>
       <h2>{JSON.stringify(team)}</h2>
-      <h5>{`Money ${money}`}</h5>
+      <h5>{`Money: ${money}`}</h5>
+      <h5>{`Team Strength: ${calculateTotal.totalStrength}`}</h5>
+      <h5>{`Team Agility: ${calculateTotal.totalAgilitiy}`}</h5>
+      <h5>Team</h5>
+      {team.length > 0
+        ? team.map((obj) => {
+            return (
+              <ul key={obj.id}>
+                <li>
+                  <img src={obj.img} alt="image of zombie fighter" />
+                </li>
+                <li>{obj.name}</li>
+                <li>{obj.price}</li>
+                <li>{obj.strength}</li>
+                <li>{obj.agility}</li>
+                <li>
+                  <button onClick={() => handleRemoveFighter(obj)}>
+                    Remove
+                  </button>
+                </li>
+              </ul>
+            );
+          })
+        : "Pick some team members!"}
+
       {zombieFighters.map((obj) => {
         return (
           <ul key={obj.id}>
