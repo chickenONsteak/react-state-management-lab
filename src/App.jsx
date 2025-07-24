@@ -133,7 +133,6 @@ const App = () => {
   return (
     <div>
       <h1>Zombie Fighters</h1>
-      <h2>{JSON.stringify(team)}</h2>
       <h5>{`Money: ${money}`}</h5>
       <h5>{`Team Strength: ${calculateTotal.totalStrength}`}</h5>
       <h5>{`Team Agility: ${calculateTotal.totalAgilitiy}`}</h5>
@@ -144,12 +143,10 @@ const App = () => {
               <ul key={obj.id}>
                 <li>
                   <img src={obj.img} alt="image of zombie fighter" />
-                </li>
-                <li>{obj.name}</li>
-                <li>{obj.price}</li>
-                <li>{obj.strength}</li>
-                <li>{obj.agility}</li>
-                <li>
+                  <p>{obj.name}</p>
+                  <p>{obj.price}</p>
+                  <p>{obj.strength}</p>
+                  <p>{obj.agility}</p>
                   <button onClick={() => handleRemoveFighter(obj)}>
                     Remove
                   </button>
@@ -164,12 +161,10 @@ const App = () => {
           <ul key={obj.id}>
             <li>
               <img src={obj.img} alt="image of zombie fighter" />
-            </li>
-            <li>{obj.name}</li>
-            <li>{obj.price}</li>
-            <li>{obj.strength}</li>
-            <li>{obj.agility}</li>
-            <li>
+              <p>{obj.name}</p>
+              <p>{obj.price}</p>
+              <p>{obj.strength}</p>
+              <p>{obj.agility}</p>
               <button onClick={() => handleAddFighter(obj)}>Add</button>
             </li>
           </ul>
