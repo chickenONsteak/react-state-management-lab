@@ -137,11 +137,11 @@ const App = () => {
       <h5>{`Team Strength: ${calculateTotal.totalStrength}`}</h5>
       <h5>{`Team Agility: ${calculateTotal.totalAgilitiy}`}</h5>
       <h5>Team</h5>
-      {team.length > 0
-        ? team.map((obj) => {
-            return (
-              <ul key={obj.id}>
-                <li>
+      <ul>
+        {team.length > 0
+          ? team.map((obj) => {
+              return (
+                <li key={obj.id}>
                   <img src={obj.img} alt="image of zombie fighter" />
                   <p>{obj.name}</p>
                   <p>{obj.price}</p>
@@ -151,15 +151,14 @@ const App = () => {
                     Remove
                   </button>
                 </li>
-              </ul>
-            );
-          })
-        : "Pick some team members!"}
-
-      {zombieFighters.map((obj) => {
-        return (
-          <ul key={obj.id}>
-            <li>
+              );
+            })
+          : "Pick some team members!"}
+      </ul>
+      <ul>
+        {zombieFighters.map((obj) => {
+          return (
+            <li key={obj.id}>
               <img src={obj.img} alt="image of zombie fighter" />
               <p>{obj.name}</p>
               <p>{obj.price}</p>
@@ -167,9 +166,9 @@ const App = () => {
               <p>{obj.agility}</p>
               <button onClick={() => handleAddFighter(obj)}>Add</button>
             </li>
-          </ul>
-        );
-      })}
+          );
+        })}
+      </ul>
     </div>
   );
 };
